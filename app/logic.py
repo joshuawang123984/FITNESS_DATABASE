@@ -1,16 +1,15 @@
 from models.AllModels import Member, Trainer, Admin, HealthMetrics, Goal, TrainingSession, GroupTrainingSession, RoomBooking, Billing
 from sqlalchemy import and_, or_
 
-def _delete_from_other_tables(session, type, attr, value):
-    session.query(type).filter(getattr(type, attr) == value).delete(synchronize_session='fetch')
-    session.commit()
-            # temp = session.query(type).filter(
-            #     getattr(type, attr) == value
-            # ).all()
+def _delete_from_other_tables(session, model, attr, value):
 
-            # for t in temp:
-            #     _safe_delete(session, t)
-                # session.delete(t)
+            temp = session.query(model).filter(
+                getattr(model, attr) == value
+            ).all()
+
+            for t in temp:
+                _safe_delete(session, t)
+                session.delete(t)
 
 def _find_overlap(session, room_id, start_time, end_time, type):
     overlap_exists = session.query(type).filter(
@@ -24,18 +23,18 @@ def _find_overlap(session, room_id, start_time, end_time, type):
     if overlap_exists:
         return True
         
-def _safe_add(session, var):
+def _safe_add(session, value):
     try:
-        session.add(var)
+        session.add(value)
         session.commit()
-        return var
+        return value
     except Exception as e:
         session.rollback()
         print(f"Error: {e}")
 
-def _safe_delete(session, var):
+def _safe_delete(session, value):
     try:
-        session.delete(var)
+        session.delete(value)
         session.commit()
     except Exception as e:
         session.rollback()

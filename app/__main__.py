@@ -17,9 +17,9 @@ def reset_tables(engine, session):
         try:
             # Delete all rows in correct order
             conn.execute(text("DELETE FROM billing"))
-            conn.execute(text("DELETE FROM room_booking"))
             conn.execute(text("DELETE FROM group_training_session"))
             conn.execute(text("DELETE FROM training_session"))
+            conn.execute(text("DELETE FROM room_booking"))
             conn.execute(text("DELETE FROM goal"))
             conn.execute(text("DELETE FROM health_metrics"))
             conn.execute(text("DELETE FROM member"))
@@ -386,5 +386,3 @@ if __name__ == '__main__':
 #For operations that involve id, if the id is given (youre logged in, then can pass in the curr_id )
 #for each page, the curr id is already stored, just pass that in then when creating the buttons.
 #also, room_booking doesnt need admin_id as an attribute. can be removed after testing
-#add try except for each logic with session.rollback() if it fails
-#if there are problems with this session rollback addition, change back to og (move the creation of row vlaue in try statement)
