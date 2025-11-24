@@ -44,7 +44,6 @@ class Admin(Base):
     billing = relationship("Billing", back_populates="admin")
     training_sessions = relationship("TrainingSession", back_populates="admin")
     group_sessions = relationship("GroupTrainingSession", back_populates="admin")
-    room_bookings = relationship("RoomBooking", back_populates="admin")
 
 class HealthMetrics(Base):
     __tablename__ = 'health_metrics'
@@ -114,11 +113,8 @@ class RoomBooking(Base):
     __tablename__ = 'room_booking'
 
     room_id = Column(Integer, primary_key=True)
-    admin_id = Column(Integer, ForeignKey('admin.admin_id'))
-
     used_status = Column(Boolean, nullable=False)
 
-    admin = relationship("Admin", back_populates="room_bookings")
     training_sessions = relationship("TrainingSession", back_populates="room")
     group_sessions = relationship("GroupTrainingSession", back_populates="room")
 
