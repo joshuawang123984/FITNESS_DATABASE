@@ -1,6 +1,7 @@
 # FITNESS DATABASE FINAL PROJECT
 Name: Joshua Wang
 SN: 101307312
+PROJ GROUP: 38
 
 This program creates 8 tables and stores them in a database.
 The program creates 8 different tables:
