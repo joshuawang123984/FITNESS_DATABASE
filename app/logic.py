@@ -140,7 +140,7 @@ def remove_group_training_session(session, room_id, start_time=None, end_time=No
 
     training_session = session.query(GroupTrainingSession).filter(or_(*filters)).first()
     if training_session:
-        _safe_delete(training_session)
+        _safe_delete(session, training_session)
 
 @staticmethod
 def create_goal(session, member_id, target_mass_kg, target_bf_percentage, start_date, end_date):

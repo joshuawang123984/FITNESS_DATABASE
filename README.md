@@ -1,4 +1,6 @@
 # FITNESS DATABASE FINAL PROJECT
+Name: Joshua Wang
+SN: 101307312
 
 This program creates 8 tables and stores them in a database.
 The program creates 8 different tables:
@@ -50,16 +52,22 @@ User input for each parameter FORMATTING:
 #TO NOTE:
 used_status in room_booking class is unused.
 
-#CASES TO TEST:
-Adding of Member, Trainer, Goal, TrainingSession, GroupTrainingSession, HealthMetric, Goal, Room, Billing 
-Removal of Member, Trainer, Goal, TrainingSession, GroupTrainingSession, HealthMetric, Goal, Room, Billing (with various combinations of parameters)
-
-Test adding sessions to rooms at overlapping times
-
-Views of DashBoard and Schedule for various Members
-Changes to dependencies after removals (eg: removing a room would remove corresponding trainingsessions using that room)
-
 Potential Adjustments:
 Many of the global_funcs have parameters that are unnecessary/unefficient ie: passing in cmnds and i in create_dialog rather than cmnds[i] (passing in a list and idx rather than the element at the list)
 
 Maybe when creating the buttons, split them up into 2 parts - creation and removals, and other
+during the video, can add get_dashboard to the trainers section of the page to make it work
+
+TESTCASES:
+Adding to each table
+Ensuring proper additions to table (ie: adding a trainingsession at the same time as another shouldnt add to the table)
+Removals of elements from each table
+Removals of dependencies of said element (ie: removal of room removes all trainingsessions in that room)
+
+UserViews (getdashboard, getschedule)
+Updates to the tables (paying bills)
+reset tables
+
+video link: 
+first vid: https://vimeo.com/1140590108?share=copy&fl=sv&fe=ci
+second vid: https://vimeo.com/1140589232?share=copy&fl=sv&fe=ci

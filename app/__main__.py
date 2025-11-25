@@ -84,9 +84,9 @@ class Page1(ttk.Frame):
 
         self.button_refs = {}
         self.all_buttons_names = ['create_goal', 'remove_goal', 'create_health_metric', 'remove_health_metric', 'update_profile', 
-                        'get_dashboard', 'pay_bill']
+                        'get_dashboard', 'pay_bill', 'create_training_session', 'create_group_training_session']
         self.cmnds = [create_goal, remove_goal, create_health_metric, 
-            remove_health_metric, update_profile, get_dashboard, pay_bill]
+            remove_health_metric, update_profile, get_dashboard, pay_bill, create_training_session, create_group_training_session]
         
         self.id_frame = ttk.Frame(self)
         self.id_frame.grid(row=3, column=0, pady=20)
@@ -128,10 +128,10 @@ class Page2(ttk.Frame):
 
         self.button_refs = {}
         self.all_buttons_names = ['create_training_session', 'remove_training_session', 'create_group_training_session', 
-                                  'remove_group_training_session', 'get_schedule']
+                                  'remove_group_training_session', 'get_schedule', 'get_dashboard']
     
         self.cmnds = [create_training_session, remove_training_session, 
-             create_group_training_session, remove_group_training_session, get_schedule]
+             create_group_training_session, remove_group_training_session, get_schedule, get_dashboard]
         
         self.id_frame = ttk.Frame(self)
         self.id_frame.grid(row=3, column=0, pady=20)
