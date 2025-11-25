@@ -114,6 +114,7 @@ class RoomBooking(Base):
     __tablename__ = 'room_booking'
 
     room_id = Column(Integer, primary_key=True)
+    admin_id = Column(Integer, ForeignKey('admin.admin_id'))
     used_status = Column(Boolean, nullable=False)
 
     admin = relationship("Admin", back_populates="room_bookings")

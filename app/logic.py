@@ -95,7 +95,7 @@ def remove_trainer(session, trainer_id, name=None, dob=None, email=None, phone=N
         _safe_delete(session,trainer)
            
 @staticmethod
-def create_training_session(session, room_id, member_id, trainer_id, start_time, end_time):
+def create_training_session(session, trainer_id, room_id, member_id, start_time, end_time):
 
     if _find_overlap(session, room_id, start_time, end_time, TrainingSession):
         print("ROOM IS BEING USED AT THIS TIME!!!")
@@ -119,7 +119,7 @@ def remove_training_session(session, room_id, start_time=None, end_time=None):
         _safe_delete(session, training_session)
 
 @staticmethod
-def create_group_training_session(session, room_id, trainer_id, start_time, end_time, num_participants):
+def create_group_training_session(session, trainer_id, room_id, start_time, end_time, num_participants):
 
     if _find_overlap(session, room_id, start_time, end_time, GroupTrainingSession):
         print("ROOM IS BEING USED AT THIS TIME!!!")

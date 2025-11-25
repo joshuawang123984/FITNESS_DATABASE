@@ -59,33 +59,7 @@ Test adding sessions to rooms at overlapping times
 Views of DashBoard and Schedule for various Members
 Changes to dependencies after removals (eg: removing a room would remove corresponding trainingsessions using that room)
 
-#TO DO:
-Must add an admin class, modify the drawio, implement this admin class
-might have to change the ui to allow for 3 types of logins, which will invenitabily affect button visibility for each user
+Potential Adjustments:
+Many of the global_funcs have parameters that are unnecessary/unefficient ie: passing in cmnds and i in create_dialog rather than cmnds[i] (passing in a list and idx rather than the element at the list)
 
-prev remove_member():
-@staticmethod
-def remove_member(session, member_id=None, name=None, dob=None, gender=None, email=None, phone=None):
-    filters = []
-    if member_id:
-        filters.append(Member.member_id == member_id)
-    if name and dob and gender:
-        filters.append(and_(Member.name == name, Member.date_of_birth == dob, Member.gender == gender))
-    if email:
-        filters.append(Member.email == email)
-    if phone:
-        filters.append(Member.phone_number == phone)
-
-    member = session.query(Member).filter(or_(*filters)).first()
-    if member:
-        try:
-            types = [Billing, TrainingSession, HealthMetrics, Goal]
-            attribute = 'member_id'
-            for type in types:
-                _delete_from_other_tables(session, type, attribute, member_id)
-            
-            _safe_delete(member)
-            session.delete(member)
-            session.commit()
-        except Exception as e:
-            session.rollback()
+Maybe when creating the buttons, split them up into 2 parts - creation and removals, and other
