@@ -16,6 +16,10 @@ The program creates 8 different tables:
 
 A user interface is then created and allows users to modify these tables, with operations such as adding, removing, viewing.
 
+ORM was used throughout this project to define and manage the eight database tables: Member, Trainer, HealthMetrics, Goal, TrainingSession, GroupTrainingSession, RoomBooking, and Billing directly through Python classes rather than writing raw SQL for every operation. Using SQLAlchemy’s ORM layer, each table is represented as a class with attributes corresponding to the columns, and relationships are defined with foreign keys and ORM relationship objects. This approach allows the program to automatically translate Python object manipulations (creating, deleting, updating) into the correct SQL statements. For example, creating a new member or scheduling a training session simply involves instantiating the class and committing it to the session with SQLAlchemy handling insertion into PostgreSQL.
+
+The ORM was also used heavily in the logic behind user operations in the Tkinter interface, particularly for enforcing constraints and cascading effects. When the user performs actions such as deleting a room, updating billing status, or adding a session, the ORM manages relationship rules such as cascading deletes or preventing invalid insertions (for example, two sessions booking the same room at the same time). Queries like retrieving dashboards, checking trainer schedules, or filtering sessions are executed through high-level ORM query methods rather than handwritten SQL. This made the project easier to scale, since SQLAlchemy ensures that all table interactions respect the schema and relationships defined in the model classes.
+
 Requirements:
 tkinter
 Python3
@@ -55,9 +59,6 @@ used_status in room_booking class is unused.
 
 Potential Adjustments:
 Many of the global_funcs have parameters that are unnecessary/unefficient ie: passing in cmnds and i in create_dialog rather than cmnds[i] (passing in a list and idx rather than the element at the list)
-
-Maybe when creating the buttons, split them up into 2 parts - creation and removals, and other
-during the video, can add get_dashboard to the trainers section of the page to make it work
 
 TESTCASES:
 Adding to each table
