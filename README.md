@@ -65,7 +65,3 @@ Removals of dependencies of said element (ie: removal of room removes all traini
 UserViews (getdashboard, getschedule)
 Updates to the tables (paying bills)
 reset tables
-
-video link: 
-first vid: https://vimeo.com/1140590108?share=copy&fl=sv&fe=ci
-second vid: https://vimeo.com/1140589232?share=copy&fl=sv&fe=ci
